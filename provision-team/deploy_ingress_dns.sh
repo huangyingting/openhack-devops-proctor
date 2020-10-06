@@ -71,7 +71,8 @@ fi
 
 echo "Upgrading tiller (helm server) to match client version."
 
-helm init --upgrade --service-account tillersa
+helm init --service-account tillersa --override spec.selector.matchLabels.'name'='tiller',spec.selector.matchLabels.'app'='helm' --output yaml | sed 's@apiVersion: extensions/v1beta1@apiVersion: apps/v1@' | kubectl apply -f -
+
 if [ $? -ne 0 ]; then
     echo "[ERROR] The helm init command failed"
     exit 1
