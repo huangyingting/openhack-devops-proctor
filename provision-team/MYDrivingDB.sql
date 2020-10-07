@@ -533,7 +533,7 @@ PRINT N'Altering [dbo].[UpdateUserProfilesOnInsert]...';
 
 
 GO
-ALTER TRIGGER [dbo].[UpdateUserProfilesOnInsert] ON [dbo].[POIs]
+CREATE TRIGGER [dbo].[UpdateUserProfilesOnInsert] ON [dbo].[POIs]
 FOR INSERT
 AS
         -- Do it for all rows inserted (maybe bulk insert)
